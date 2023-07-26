@@ -1,0 +1,89 @@
+.my-img{
+    background: url(../../../assets/winjit.jpg) no-repeat center center;
+    background-size: cover;
+    position: sticky;
+}
+
+.left{
+    transform: translateX(60px);
+}
+@media (orientation: portrait) {
+    .left{
+        transform: translateX(0px);
+    }
+    .custom{
+        width: 90% !important;
+    }
+    .width-input{
+        width: 100% !important;
+    }
+    .width-input{
+        input{
+            width: 100% !important;   
+        }
+    }
+  }
+.error{
+    font-size: 12px;
+    margin-left: 15px;
+    margin-bottom: 0;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.height-fix{
+    transform: translateY(-3px);
+    cursor: pointer;
+}
+.height-fix2{
+    transform: translateY(10px);
+    cursor: pointer;
+}
+
+.fix{
+    transform: translateX(11px);
+}
+
+.custom{
+    position: relative;
+    width: 75%;
+    background-color: transparent;
+    border: 0;
+    border-bottom: 2px solid rgb(136, 136, 136) ;
+   
+}
+
+.custom:active, .custom:focus{
+    border-bottom: 2px solid rgb(91, 194, 229) ;
+}
+
+
+.change:hover, .custom:hover ~.change, .custom:focus~.change, .custom:active~.change{
+    transform: translateY(-25px);
+    font-size: 75%;
+    color: rgb(91, 194, 229);
+}
+
+.custom:hover, .custom:focus, .custom:active{
+    box-shadow: none;
+}
+
+
+.change{
+    position: absolute;
+    transition: ease-in 0.3s;
+}
+
+.label-filled{
+    transform: translateY(-25px);
+    font-size: 75%;
+    color: rgb(136, 136, 136) ;
+}
+
+.width-input{
+    width: 87%;
+}
+

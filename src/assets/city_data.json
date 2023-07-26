@@ -1,0 +1,167 @@
+[
+    {
+        "country": "India",
+        "states": [{
+                    "name": "Maharashtra",
+                    "city": 
+                        [{
+                            "name": "Mumbai",
+                            "pincode": 400001
+                         },
+                         {
+                            "name": "Nashik",
+                            "pincode": 422007
+                         },
+                         {
+                            "name": "Pune",
+                            "pincode": 111045
+                         }
+                        ]
+                    },
+                    {
+                        "name": "Gujarat",
+                        "city": 
+                            [{
+                                "name": "Vapi",
+                                "pincode": 396145
+                             },
+                             {
+                                "name": "Amdavad",
+                                "pincode": 320008
+                             },
+                             {
+                                "name": "Surat",
+                                "pincode": 335009
+                             }
+                            ]
+                    },
+                    {
+                        "name": "Rajastan",
+                        "city": 
+                            [{
+                                "name": "Jaipur",
+                                "pincode": 302001
+                             },
+                             {
+                                "name": "Kota",
+                                "pincode": 324001
+                             },
+                             {
+                                "name": "Udaipur",
+                                "pincode": 313001
+                             }
+                            ]
+                    }
+                ]
+    },
+    {
+        "country": "UK",
+        "states": [{
+                    "name": "England",
+                    "city": 
+                        [{
+                            "name": "London",
+                            "pincode": 56273
+                         },
+                         {
+                            "name": "Manchester",
+                            "pincode": 56275
+                         },
+                         {
+                            "name": "Liverpool",
+                            "pincode": 56277
+                         }
+                        ]
+                    },
+                    {
+                        "name": "Scotland",
+                        "city": 
+                            [{
+                                "name": "Glasgow",
+                                "pincode": 39614
+                             },
+                             {
+                                "name": "Perth",
+                                "pincode": 32000
+                             },
+                             {
+                                "name": "Dundee",
+                                "pincode": 33500
+                             }
+                            ]
+                    },
+                    {
+                        "name": "Wales",
+                        "city": 
+                            [{
+                                "name": "Cardiff",
+                                "pincode": 30201
+                             },
+                             {
+                                "name": "Swansea",
+                                "pincode": 32403
+                             },
+                             {
+                                "name": "Newport",
+                                "pincode": 31305
+                             }
+                            ]
+                    }
+                ]
+    },
+    {
+        "country": "USA",
+        "states": [{
+                    "name": "Calafornia",
+                    "city": 
+                        [{
+                            "name": "Pasadena",
+                            "pincode": 91001
+                         },
+                         {
+                            "name": "Altadena",
+                            "pincode": 91003
+                         },
+                         {
+                            "name": "Los Angeles",
+                            "pincode": 90001
+                         }
+                        ]
+                    },
+                    {
+                        "name": "Texas",
+                        "city": 
+                            [{
+                                "name": "Houston",
+                                "pincode": 77001
+                             },
+                             {
+                                "name": "Austin",
+                                "pincode": 77002
+                             },
+                             {
+                                "name": "Dallas",
+                                "pincode": 77003
+                             }
+                            ]
+                    },
+                    {
+                        "name": "Florida",
+                        "city": 
+                            [{
+                                "name": "Miami",
+                                "pincode": 33101
+                             },
+                             {
+                                "name": "Orlando",
+                                "pincode": 33102
+                             },
+                             {
+                                "name": "Tampa",
+                                "pincode": 33103
+                             }
+                            ]
+                    }
+                ]
+    }
+]
