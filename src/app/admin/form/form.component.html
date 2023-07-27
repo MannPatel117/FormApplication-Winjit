@@ -6,7 +6,7 @@
     <div class="row mb-4">
       <div class="col-lg-6 mb-3 mb-lg-0">
         <div class="d-flex gap-4 align-items-center">
-          <input type="text" formControlName="firstName" class="w-75 form-control custom " />
+          <input type="text" formControlName="firstName" class="w-75 form-control custom w-lg-100" />
           <label class="form-label text-nowrap change"
             [class.label-filled]="registerForm.get('firstName').value !== ''">First Name</label>
         </div>
@@ -85,7 +85,6 @@
             registerForm.get('gender').hasError('required') &&
             (registerForm.get('gender')?.touched || !isValid)
           " class="row">
-          <div class="w-25"></div>
           <div class="w-75">
             <p class="text-danger error">Select Gender</p>
           </div>
@@ -102,7 +101,6 @@
               registerForm.get('date')?.dirty ||
               !isValid)
           " class="row">
-          <div class="w-25"></div>
           <div class="w-75">
             <p *ngIf="registerForm.get('date').hasError('required')" class="text-danger error">
               Select Date
@@ -117,10 +115,9 @@
     <div class="row mb-4">
       <div class="col-lg-6 mb-3 mb-lg-0">
         <div class="d-flex gap-4 align-items-center">
-          <input type="text" formControlName="addressLine1" class="form-control w-75 custom"
-           />
-          <label class="form-label text-nowrap change" [class.label-filled]="registerForm.get('addressLine1').value !== ''">Address Line 1</label>
-         
+          <input type="text" formControlName="addressLine1" class="form-control w-75 custom" />
+          <label class="form-label text-nowrap change"
+            [class.label-filled]="registerForm.get('addressLine1').value !== ''">Address Line 1</label>
         </div>
         <div *ngIf="
             registerForm.get('addressLine1')?.invalid &&
@@ -128,7 +125,6 @@
               registerForm.get('addressLine1')?.dirty ||
               !isValid)
           " class="row">
-
           <div class="w-75">
             <p class="text-danger error">Enter Address Line 1</p>
           </div>
@@ -136,9 +132,9 @@
       </div>
       <div class="col-lg-6">
         <div class="d-flex gap-4 align-items-center">
-          <input type="text" formControlName="addressLine2" class="form-control w-75 custom"/>
-          <label class="form-label text-nowrap change" [class.label-filled]="registerForm.get('addressLine2').value !== ''">Address Line 2</label>
-  
+          <input type="text" formControlName="addressLine2" class="form-control w-75 custom" />
+          <label class="form-label text-nowrap change"
+            [class.label-filled]="registerForm.get('addressLine2').value !== ''">Address Line 2</label>
         </div>
         <div *ngIf="
             registerForm.get('addressLine2')?.invalid &&
@@ -146,7 +142,6 @@
               registerForm.get('addressLine2')?.dirty ||
               !isValid)
           " class="row">
-
           <div class="w-75">
             <p class="text-danger error">Enter Address Line 2</p>
           </div>
@@ -155,7 +150,7 @@
     </div>
     <div class="row mb-4">
       <div class="col-lg-6 mb-3 mb-lg-0">
-        <div class="d-flex  align-items-center">
+        <div class="d-flex align-items-center">
           <label class="w-25 form-label text-nowrap">Country</label>
           <select id="country" formControlName="country" (change)="changeCountry($event)"
             class="w-50 btn btn-secondary dropdown-toggle">
@@ -170,7 +165,6 @@
               registerForm.controls['country']?.dirty ||
               !isValid)
           " class="row">
-
           <div class="w-75">
             <p class="text-danger error">Select Country</p>
           </div>
@@ -191,7 +185,6 @@
               registerForm.get('state')?.dirty ||
               !isValid)
           " class="row">
-  
           <div class="w-75">
             <p class="text-danger error">Select State</p>
           </div>
@@ -200,7 +193,7 @@
     </div>
     <div class="row mb-4">
       <div class="col-lg-6 mb-3 mb-lg-0">
-        <div class="d-flex  align-items-center">
+        <div class="d-flex align-items-center">
           <label class="w-25 form-label text-nowrap">City</label>
           <select formControlName="city" class="w-50 btn btn-secondary dropdown-toggle">
             <option *ngFor="let city of cityArr" [value]="city">
@@ -214,7 +207,6 @@
               registerForm.get('city')?.dirty ||
               !isValid)
           " class="row">
-      
           <div class="w-75">
             <p class="text-danger error">Select City</p>
           </div>
@@ -223,8 +215,8 @@
       <div class="col-lg-6">
         <div class="d-flex gap-4 align-items-center">
           <input type="text" formControlName="pincode" class="form-control w-75 custom" maxlength="6" />
-          <label class="w-25 form-label text-nowrap change" [class.label-filled]="registerForm.get('pincode').value !== ''">Pincode</label>
-      
+          <label class="w-25 form-label text-nowrap change"
+            [class.label-filled]="registerForm.get('pincode').value !== ''">Pincode</label>
         </div>
         <div *ngIf="
             registerForm.get('pincode')?.invalid &&
@@ -232,7 +224,6 @@
               registerForm.get('pincode')?.dirty ||
               !isValid)
           " class="row">
-
           <div class="w-75">
             <p *ngIf="registerForm.get('pincode').hasError('required')" class="text-danger error">
               Enter Pincode
@@ -253,9 +244,9 @@
     <div class="row mb-4">
       <div class="col-lg-6 mb-3 mb-lg-0">
         <div class="d-flex gap-4 align-items-center">
-          <input type="email" formControlName="email" class="form-control w-75 custom"  />
-          <label class="w-25 form-label text-nowrap change" [class.label-filled]="registerForm.get('email').value !== ''">Email</label>
-
+          <input type="email" formControlName="email" class="form-control w-75 custom" />
+          <label class="w-25 form-label text-nowrap change"
+            [class.label-filled]="registerForm.get('email').value !== ''">Email</label>
         </div>
         <div *ngIf="
             registerForm.get('email')?.invalid &&
@@ -275,9 +266,9 @@
       </div>
       <div class="col-lg-6">
         <div class="d-flex gap-4 align-items-center">
-            <input type="text" formControlName="phonenumber" maxlength="10" class="form-control w-75 custom" />
-          <label [class.label-filled]="registerForm.get('phonenumber').value !== ''" class="change form-label text-nowrap">Phone Number</label>
-  
+          <input type="text" formControlName="phonenumber" maxlength="10" class="form-control w-75 custom" />
+          <label [class.label-filled]="registerForm.get('phonenumber').value !== ''"
+            class="change form-label text-nowrap">Phone Number</label>
         </div>
         <div *ngIf="
             registerForm.get('phonenumber')?.invalid &&
@@ -285,7 +276,6 @@
               registerForm.get('phonenumber')?.dirty ||
               !isValid)
           " class="row">
-
           <div class="w-75">
             <p *ngIf="registerForm.get('phonenumber').hasError('required')" class="text-danger error">
               Enter Phone Number
@@ -321,15 +311,16 @@
               <div class="col-lg-4 mb-2 mb-lg-0">
                 <div class="d-flex gap-4 align-items-center">
                   <input type="text" formControlName="university" class="w-75 form-control custom" />
-                  <label class="change form-label text-nowrap" [class.label-filled]="edu.get('university').value !== ''">University</label>
-               
+                  <label class="change form-label text-nowrap"
+                    [class.label-filled]="edu.get('university').value !== ''">University</label>
                 </div>
                 <div *ngIf="
                     edu.get('university')?.invalid &&
                     (edu.get('university')?.touched ||
                       edu.get('university')?.dirty ||
                       !isValid)
-                  " class="row">                 <div class="w-75">
+                  " class="row">
+                  <div class="w-75">
                     <p *ngIf="edu.get('university').hasError('required')" class="text-danger error">
                       Enter University Name
                     </p>
@@ -339,8 +330,8 @@
               <div class="col-lg-4 mb-2 mb-lg-0">
                 <div class="d-flex gap-4 align-items-center">
                   <input type="text" formControlName="qualification" class="form-control custom" />
-                  <label class="form-label text-nowrap change" [class.label-filled]="edu.get('qualification').value !== ''">Qualification</label>
-            
+                  <label class="form-label text-nowrap change"
+                    [class.label-filled]="edu.get('qualification').value !== ''">Qualification</label>
                 </div>
                 <div *ngIf="
                     edu.get('qualification')?.invalid &&
@@ -348,7 +339,6 @@
                       edu.get('qualification')?.dirty ||
                       !isValid)
                   " class="row">
-
                   <div class="w-75">
                     <p *ngIf="edu.get('qualification').hasError('required')" class="text-danger error w-75">
                       Enter Qualification
@@ -359,8 +349,8 @@
               <div class="col-lg-3 mb-2 mb-lg-0">
                 <div class="d-flex gap-4 align-items-center">
                   <input type="text" formControlName="percentage" class="form-control w-75 custom" />
-                  <label class="form-label text-nowrap change" [class.label-filled]="edu.get('percentage').value !== ''">Percentage</label>
-                
+                  <label class="form-label text-nowrap change"
+                    [class.label-filled]="edu.get('percentage').value !== ''">Percentage</label>
                 </div>
                 <div *ngIf="
                     edu.get('percentage')?.invalid &&
@@ -368,7 +358,6 @@
                       edu.get('percentage')?.dirty ||
                       !isValid)
                   " class="row">
-
                   <div class="w-75">
                     <p *ngIf="edu.get('percentage').hasError('required')" class="text-danger error">
                       Enter Percentage
@@ -408,9 +397,9 @@
             <div class="row d-flex align-items-start justify-content-center width-input">
               <div class="col-lg-4 mb-2 mb-lg-0">
                 <div class="d-flex gap-4 align-items-center">
-                  <input type="text" formControlName="company" class="w-75 form-control custom"  />
-                  <label class="w-25 form-label text-nowrap change" [class.label-filled]="exp.get('company').value !== ''">Company</label>
-                
+                  <input type="text" formControlName="company" class="w-75 form-control custom" />
+                  <label class="w-25 form-label text-nowrap change"
+                    [class.label-filled]="exp.get('company').value !== ''">Company</label>
                 </div>
                 <div *ngIf="
                     exp.get('company')?.invalid &&
@@ -418,7 +407,6 @@
                       exp.get('company')?.dirty ||
                       !isValid)
                   " class="row">
-    
                   <div class="w-75">
                     <p *ngIf="exp.get('company').hasError('required')" class="text-danger error">
                       Enter Company Name
@@ -428,9 +416,9 @@
               </div>
               <div class="col-lg-4 mb-2 mb-lg-0">
                 <div class="d-flex gap-4 align-items-center">
-                  <input type="text" formControlName="position" class="form-control custom"  />
-                  <label class="form-label text-nowrap change" [class.label-filled]="exp.get('position').value !== ''">Position</label>
-               
+                  <input type="text" formControlName="position" class="form-control custom" />
+                  <label class="form-label text-nowrap change"
+                    [class.label-filled]="exp.get('position').value !== ''">Position</label>
                 </div>
                 <div *ngIf="
                     exp.get('position')?.invalid &&
@@ -438,7 +426,6 @@
                       exp.get('position')?.dirty ||
                       !isValid)
                   " class="row">
-
                   <div class="w-75">
                     <p *ngIf="exp.get('position').hasError('required')" class="text-danger error w-75">
                       Enter position
@@ -449,8 +436,8 @@
               <div class="col-lg-3 mb-2 mb-lg-0">
                 <div class="d-flex gap-4 align-items-center">
                   <input type="text" formControlName="years" class="form-control w-75 custom" />
-                  <label class="form-label text-nowrap change" [class.label-filled]="exp.get('years').value !== ''">Year</label>
-
+                  <label class="form-label text-nowrap change"
+                    [class.label-filled]="exp.get('years').value !== ''">Year</label>
                 </div>
                 <div *ngIf="
                     exp.get('years')?.invalid &&
@@ -458,7 +445,6 @@
                       exp.get('years')?.dirty ||
                       !isValid)
                   " class="row">
-
                   <div class="w-75">
                     <p *ngIf="exp.get('years').hasError('required')" class="text-danger error">
                       Enter Years
@@ -509,9 +495,7 @@
           registerForm.get('check')?.dirty ||
           !isValid)
       ">
-      <p *ngIf="registerForm.get('check').hasError('required')" class="text-danger error">
-        Accept Terms and Condition
-      </p>
+      <p class="text-danger error">Accept Terms and Condition</p>
     </div>
     <br />
     <br />
@@ -519,4 +503,169 @@
       Submit
     </button>
   </form>
+</div>
+
+
+<!-- Angular Material -->
+
+<div class="container">
+  <mat-stepper [linear]="true" orientation="vertical" #stepper>
+    <mat-step [stepControl]="registerForm1">
+      <form [formGroup]="registerForm1">
+        <ng-template matStepLabel>Personal Details</ng-template>
+        <div class="mt-4 mb-4">
+          <div class="d-flex gap-4 align-items-center">
+            <input type="text" formControlName="firstName" class="form-control custom" />
+            <label class="form-label text-nowrap change"
+              [class.label-filled]="registerForm1.get('firstName').value !== ''">First Name</label>
+          </div>
+          <div *ngIf="
+          registerForm1.get('firstName')?.invalid &&
+              (registerForm1.get('firstName')?.touched ||
+              registerForm1.get('firstName')?.dirty ||
+                !isValid1)
+            " class="row">
+            <div>
+              <p *ngIf="registerForm1.get('firstName').hasError('required')" class="text-danger error">
+                Enter Firstname
+              </p>
+              <p *ngIf="
+              registerForm1.get('firstName')?.invalid &&
+                  !registerForm1.get('firstName').hasError('required')
+                " class="text-danger error">
+                Name is invalid
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="mb-4">
+          <div class="d-flex gap-4 align-items-center">
+            <input type="text" formControlName="lastName" class="form-control custom" />
+            <label class="form-label text-nowrap change"
+              [class.label-filled]="registerForm1.get('lastName').value !== ''">Last Name</label>
+          </div>
+          <div *ngIf="
+          registerForm1.get('lastName')?.invalid &&
+              (registerForm1.get('lastName')?.touched ||
+              registerForm1.get('lastName')?.dirty ||
+                !isValid1)
+            " class="row">
+            <div>
+              <p *ngIf="registerForm1.get('lastName').hasError('required')" class="text-danger error">
+                Enter Lastname
+              </p>
+              <p *ngIf="
+              registerForm1.get('lastName')?.invalid &&
+                  !registerForm1.get('lastName').hasError('required')
+                " class="text-danger error">
+                Name is invalid
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="mb-4">
+          <div class="d-flex gap-4 align-items-center">
+            <label class="w-25 form-label text-nowrap">Gender</label>
+            <div class="form-check">
+              <input class="form-check-input" formControlName="gender" value="male" type="radio" name="gender"
+                id="flexRadioDefault1" />
+              <label class="form-check-label" for="flexRadioDefault1">
+                Male
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" formControlName="gender" value="female" type="radio" name="gender"
+                id="flexRadioDefault2" />
+              <label class="form-check-label" for="flexRadioDefault2">
+                Female
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" formControlName="gender" value="other" type="radio" name="gender"
+                id="flexRadioDefault3" />
+              <label class="form-check-label" for="flexRadioDefault3">
+                Other
+              </label>
+            </div>
+          </div>
+          <div *ngIf="
+              registerForm1.get('gender').hasError('required') &&
+              (registerForm1.get('gender')?.touched || !isValid1)
+            " class="row">
+            <div class="w-75">
+              <p class="text-danger error">Select Gender</p>
+            </div>
+          </div>
+        </div>
+        <div class="mb-4 custom-height">
+          <div class="d-flex align-items-center gap-2">
+            <label class="w-25 form-label text-nowrap">Birth Date</label>
+            <input formControlName="date" type="date" placeholder="Birth Date" class="input-group  form-control" />
+          </div>
+          <div *ngIf="
+              registerForm1.get('date')?.invalid &&
+              (registerForm1.get('date')?.touched ||
+                registerForm1.get('date')?.dirty ||
+                !isValid1)
+            " class="row">
+            <div class="w-75">
+              <p *ngIf="registerForm1.get('date').hasError('required')" class="text-danger error">
+                Select Date
+              </p>
+              <p *ngIf="registerForm1.get('date').hasError('pattern')" class="text-danger error">
+                Format should be yyyy-MM-dd.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <button color="primary" mat-raised-button matStepperNext (click)="submit1()">Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="registerForm" label="Fill out your address">
+      <form [formGroup]="registerForm">
+        <mat-form-field>
+          <mat-label>Address</mat-label>
+          <input matInput placeholder="Ex. 1 Main St, New York, NY" required />
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="registerForm" label="Fill out your address">
+      <form [formGroup]="registerForm">
+        <mat-form-field>
+          <mat-label>Address</mat-label>
+          <input matInput placeholder="Ex. 1 Main St, New York, NY" required />
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="registerForm" label="Fill out your address">
+      <form [formGroup]="registerForm">
+        <mat-form-field>
+          <mat-label>Address</mat-label>
+          <input matInput placeholder="Ex. 1 Main St, New York, NY" required />
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
 </div>

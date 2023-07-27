@@ -1,18 +1,18 @@
-.my-img{
-    background: url(../../../assets/winjit.jpg) no-repeat center center;
-    background-size: cover;
-    position: sticky;
-}
+@import '../../../custom-style.scss';
+
 
 .left{
     transform: translateX(60px);
 }
-@media (orientation: portrait) {
+@media screen and (max-width: 992px) {
     .left{
         transform: translateX(0px);
     }
     .custom{
-        width: 90% !important;
+        width: 100% !important;
+    }
+    .custom-height{
+        width: 100% !important;
     }
     .width-input{
         width: 100% !important;
@@ -49,15 +49,19 @@ input::-webkit-inner-spin-button {
 
 .custom{
     position: relative;
-    width: 75%;
+    width: 50%;
     background-color: transparent;
     border: 0;
     border-bottom: 2px solid rgb(136, 136, 136) ;
    
 }
 
+.custom-height{
+    width: 50%;
+}
+
 .custom:active, .custom:focus{
-    border-bottom: 2px solid rgb(91, 194, 229) ;
+    border-bottom: 2px solid rgb(91, 194, 229);
 }
 
 

@@ -1,15 +1,24 @@
-
-import { Observable } from 'rxjs';
-import {LiveAnnouncer} from '@angular/cdk/a11y';
-import {AfterViewInit, Component, ViewChild, OnInit} from '@angular/core';
-import {MatSort, Sort, MatSortModule} from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {Observable} from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
+import { BottomSheetComponent } from '../bottom-sheet/bottom-sheet.component';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { ThemePalette } from '@angular/material/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogueBoxComponent } from '../dialogue-box/dialogue-box.component';
 
 export interface PeriodicElement {
   name: string;
   position: number;
   weight: number;
   symbol: string;
+}
+export interface Task {
+  name: string;
+  completed: boolean;
+  color: ThemePalette;
+  subtasks?: Task[];
 }
 const ELEMENT_DATA: PeriodicElement[] = [
   {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
@@ -27,44 +36,95 @@ const ELEMENT_DATA: PeriodicElement[] = [
   selector: 'app-check-observe',
   templateUrl: './check-observe.component.html',
   styleUrls: ['./check-observe.component.scss'],
+
 })
 
-export class CheckObserveComponent implements  AfterViewInit{
+export class CheckObserveComponent implements OnInit{
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  task: Task = {
+    name: 'Indeterminate',
+    completed: false,
+    color: 'primary',
+    subtasks: [
+      {name: 'Primary', completed: false, color: 'primary'},
+      {name: 'Accent', completed: false, color: 'accent'},
+      {name: 'Warn', completed: false, color: 'warn'},
+    ],
+  };
 
-  constructor(private _liveAnnouncer: LiveAnnouncer) {}
+  allComplete: boolean = false;
 
-  @ViewChild(MatSort) sort: MatSort;
+  constructor(private _bottomSheet: MatBottomSheet, public dialog: MatDialog) {}
+  
+  myControl = new FormControl('');
+  options: string[] = ['One', 'Two', 'Three'];
+  filteredOptions: Observable<string[]>;
 
   panelOpenState = false;
 
-
-  myObservable = new Observable((observer)=> {
-     console.log("Observable starting");
-     setTimeout(()=>{observer.next("1")}, 1000)
-     setTimeout(()=>{observer.next("2")}, 2000)
-     setTimeout(()=>{observer.next("3")}, 3000)
-     setTimeout(()=>{observer.next("4")}, 4000)
-     setTimeout(()=>{observer.next("5")}, 5000)
-  })
-
-  
-
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
+  ngOnInit() {
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value || '')),
+    );
   }
 
-  announceSortChange(sortState: Sort) {
-    // This example uses English messages. If your application supports
-    // multiple language, you would internationalize these strings.
-    // Furthermore, you can customize the message to add additional
-    // details about the values being sorted.
-    if (sortState.direction) {
-      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
-    } else {
-      this._liveAnnouncer.announce('Sorting cleared');
+  /*
+    Function to Filter Value for Autocorrect
+  */
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  }
+
+  /*
+    Function to Hide Value for Badge
+  */
+
+  hidden = false;
+
+  toggleBadgeVisibility() {
+    this.hidden = !this.hidden;
+  }
+
+  openBottomSheet(): void {
+    this._bottomSheet.open(BottomSheetComponent);
+  }
+
+  /*
+    Function for Checkbox Component
+  */
+
+  updateAllComplete() {
+    this.allComplete = this.task.subtasks != null && this.task.subtasks.every(t => t.completed);
+  }
+
+  someComplete(): boolean {
+    if (this.task.subtasks == null) {
+      return false;
     }
+    return this.task.subtasks.filter(t => t.completed).length > 0 && !this.allComplete;
+  }
+
+  setAll(completed: boolean) {
+    this.allComplete = completed;
+    if (this.task.subtasks == null) {
+      return;
+    }
+    this.task.subtasks.forEach(t => (t.completed = completed));
+  }
+
+  /*
+    Function for Dialogue Box
+  */
+
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogueBoxComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 }

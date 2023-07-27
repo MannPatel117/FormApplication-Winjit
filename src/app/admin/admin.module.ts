@@ -10,6 +10,11 @@ import { NgbAlertModule, NgbDatepickerModule, NgbDateStruct } from '@ng-bootstra
 import { FormsModule } from '@angular/forms';
 import { DeleteModalComponent } from './delete-modal/delete-modal.component';
 import { ViewModalComponent } from './view-modal/view-modal.component';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatButtonModule} from '@angular/material/button';
+
 @NgModule({
   declarations: [
     FormComponent,
@@ -26,6 +31,10 @@ import { ViewModalComponent } from './view-modal/view-modal.component';
     NgbDatepickerModule, 
     NgbAlertModule, 
     JsonPipe,
+    MatStepperModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatButtonModule
   ],
 
 })

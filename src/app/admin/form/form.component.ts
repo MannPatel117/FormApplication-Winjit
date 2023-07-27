@@ -13,7 +13,8 @@ import { AppComponent } from 'src/app/app.component';
 export class FormComponent implements OnInit {
 
   registerForm: FormGroup;
-
+  registerForm1: FormGroup;
+  
   countryArr:any = [];
   countryIndex: number;
 
@@ -25,6 +26,7 @@ export class FormComponent implements OnInit {
   selectedImagePreview: string | ArrayBuffer | null = null;
 
   isValid=true;
+  isValid1=true;
 
   ngOnInit(): void {
     this.init();
@@ -58,10 +60,19 @@ export class FormComponent implements OnInit {
       image: ['', [Validators.required]],
       education: this.fb.array([]),
       experience: this.fb.array([]),
-      check: ['', Validators.required]
+      check: [false, Validators.requiredTrue]
     });
     this.fetchCountry();
+
+    this.registerForm1 = this.fb.group({
+      firstName: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
+      lastName: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
+      gender: ['', [Validators.required]],
+      date: ['', [Validators.required]]
+    });
   }
+
+
 
   /*
     Functions for Country and City
@@ -160,6 +171,12 @@ export class FormComponent implements OnInit {
     else {
       this.saveData(this.registerForm.value);
       this.appComp.routeShow();
+    }
+  }
+
+  submit1() {
+    if (this.registerForm1.invalid) {
+      this.isValid1=false;
     }
   }
   

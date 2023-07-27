@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DataModalServiceService } from '../service/data-modal-service.service';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-view-modal',
@@ -7,25 +8,24 @@ import { DataModalServiceService } from '../service/data-modal-service.service';
   styleUrls: ['./view-modal.component.scss'],
 })
 export class ViewModalComponent implements OnInit {
-  @Input() displayData:any;
-  constructor(private dataModal: DataModalServiceService) {}
-
+  displayData:any;
+  modalViewRef: any;
+  constructor(public activeModal: NgbActiveModal) {}
   
-
   ngOnInit(): void {
-    this.getData();
+    this.process();
   }
 
   showEdu: boolean;
 
   showExp: boolean;
 
-  async getData() {
+  async process() {
     this.showEdu = this.displayData.education.length == 0;
     this.showExp = this.displayData.experience.length == 0;
   }
 
   trgCloseModal() {
-    this.dataModal.closeModalView();
+    this.activeModal.close();
   }
 }

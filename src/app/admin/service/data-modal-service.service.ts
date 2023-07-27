@@ -75,4 +75,5 @@ export class DataModalServiceService {
   closeModalView() {
     this.modalViewRef.close();
   }
+  
 }
