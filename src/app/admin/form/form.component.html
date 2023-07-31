@@ -12,8 +12,8 @@
     <div class="row mb-4">
       <div class="col-lg-6 mb-3 mb-lg-0">
         <div class="d-flex gap-4 align-items-center">
-          <input type="text" formControlName="firstName" class="w-75 form-control custom w-lg-100" />
-          <label class="form-label text-nowrap change"
+          <input id="fname" type="text" formControlName="firstName" class="w-75 form-control custom w-lg-100" />
+          <label for="fname" class="form-label text-nowrap change"
             [class.label-filled]="registerForm.get('firstName').value !== ''">First Name</label>
         </div>
         <div *ngIf="
@@ -37,8 +37,8 @@
       </div>
       <div class="col-lg-6">
         <div class="d-flex gap-4 align-items-center">
-          <input type="text" formControlName="lastName" class="form-control custom w-75" />
-          <label class="change form-label text-nowrap"
+          <input id="lname" type="text" formControlName="lastName" class="form-control custom w-75" />
+          <label for="lname" class="change form-label text-nowrap"
             [class.label-filled]="registerForm.get('lastName').value !== ''">Last Name</label>
         </div>
         <div *ngIf="
@@ -98,8 +98,8 @@
       </div>
       <div class="col-lg-6">
         <div class="d-flex align-items-center">
-          <label class="w-25 form-label text-nowrap">Birth Date</label>
-          <input formControlName="date" type="date" placeholder="Birth Date" class="input-group w-50 form-control" />
+          <label for="dob" class="w-25 form-label text-nowrap">Birth Date</label>
+          <input id="dob" formControlName="date" type="date" placeholder="Birth Date" class="input-group w-50 form-control" />
         </div>
         <div *ngIf="
             registerForm.get('date')?.invalid &&
@@ -121,8 +121,8 @@
     <div class="row mb-4">
       <div class="col-lg-6 mb-3 mb-lg-0">
         <div class="d-flex gap-4 align-items-center">
-          <input type="text" formControlName="addressLine1" class="form-control w-75 custom" />
-          <label class="form-label text-nowrap change"
+          <input id="address1" type="text" formControlName="addressLine1" class="form-control w-75 custom" />
+          <label for="address1" class="form-label text-nowrap change"
             [class.label-filled]="registerForm.get('addressLine1').value !== ''">Address Line 1</label>
         </div>
         <div *ngIf="
@@ -138,8 +138,8 @@
       </div>
       <div class="col-lg-6">
         <div class="d-flex gap-4 align-items-center">
-          <input type="text" formControlName="addressLine2" class="form-control w-75 custom" />
-          <label class="form-label text-nowrap change"
+          <input id="address2" type="text" formControlName="addressLine2" class="form-control w-75 custom" />
+          <label for="address2" class="form-label text-nowrap change"
             [class.label-filled]="registerForm.get('addressLine2').value !== ''">Address Line 2</label>
         </div>
         <div *ngIf="
@@ -157,7 +157,7 @@
     <div class="row mb-4">
       <div class="col-lg-6 mb-3 mb-lg-0 ">
         <div class="d-flex align-items-center">
-          <label class="w-25 form-label text-nowrap">Country</label>
+          <label for="country" class="w-25 form-label text-nowrap">Country</label>
           <select id="country" formControlName="country" (change)="changeCountry($event)"
             class="w-50 btn btn-secondary dropdown-toggle select">
             <option *ngFor="let count of countryArr" [value]="count">
@@ -178,8 +178,8 @@
       </div>
       <div class="col-lg-6">
         <div class="d-flex align-items-center">
-          <label class="w-25 form-label text-nowrap">State</label>
-          <select formControlName="state" (change)="changeState($event)" class="w-50 btn btn-secondary dropdown-toggle select">
+          <label for="state" class="w-25 form-label text-nowrap">State</label>
+          <select id="state" formControlName="state" (change)="changeState($event)" class="w-50 btn btn-secondary dropdown-toggle select">
             <option *ngFor="let stat of stateArr" [value]="stat">
               {{ stat }}
             </option>
@@ -200,8 +200,8 @@
     <div class="row mb-4">
       <div class="col-lg-6 mb-3 mb-lg-0">
         <div class="d-flex align-items-center">
-          <label class="w-25 form-label text-nowrap">City</label>
-          <select formControlName="city" class="w-50 btn btn-secondary dropdown-toggle select">
+          <label for="city" class="w-25 form-label text-nowrap">City</label>
+          <select id="city" formControlName="city" class="w-50 btn btn-secondary dropdown-toggle select">
             <option *ngFor="let city of cityArr" [value]="city">
               {{ city }}
             </option>
@@ -220,8 +220,8 @@
       </div>
       <div class="col-lg-6">
         <div class="d-flex gap-4 align-items-center">
-          <input type="text" formControlName="pincode" class="form-control w-75 custom" maxlength="6" />
-          <label class="w-25 form-label text-nowrap change"
+          <input id="pincode" type="text" formControlName="pincode" class="form-control w-75 custom" maxlength="6" />
+          <label for="pincode" class="w-25 form-label text-nowrap change"
             [class.label-filled]="registerForm.get('pincode').value !== ''">Pincode</label>
         </div>
         <div *ngIf="
@@ -250,8 +250,8 @@
     <div class="row mb-4">
       <div class="col-lg-6 mb-3 mb-lg-0">
         <div class="d-flex gap-4 align-items-center">
-          <input type="email" formControlName="email" class="form-control w-75 custom" />
-          <label class="w-25 form-label text-nowrap change"
+          <input id="email" type="email" formControlName="email" class="form-control w-75 custom" />
+          <label for="email" class="w-25 form-label text-nowrap change"
             [class.label-filled]="registerForm.get('email').value !== ''">Email</label>
         </div>
         <div *ngIf="
@@ -272,8 +272,8 @@
       </div>
       <div class="col-lg-6">
         <div class="d-flex gap-4 align-items-center">
-          <input type="text" formControlName="phonenumber" maxlength="10" class="form-control w-75 custom" />
-          <label [class.label-filled]="registerForm.get('phonenumber').value !== ''"
+          <input id="phn" type="text" formControlName="phonenumber" maxlength="10" class="form-control w-75 custom" />
+          <label for="phn" [class.label-filled]="registerForm.get('phonenumber').value !== ''"
             class="change form-label text-nowrap">Phone Number</label>
         </div>
         <div *ngIf="
@@ -316,8 +316,8 @@
             <div class="row d-flex align-items-start justify-content-center width-input">
               <div class="col-lg-4 mb-4 mb-lg-0">
                 <div class="d-flex gap-4 align-items-center">
-                  <input type="text" formControlName="university" class="w-75 form-control custom" />
-                  <label class="change form-label text-nowrap"
+                  <input id="uni" type="text" formControlName="university" class="w-75 form-control custom" />
+                  <label for="uni" class="change form-label text-nowrap"
                     [class.label-filled]="edu.get('university').value !== ''">University</label>
                 </div>
                 <div *ngIf="
@@ -335,8 +335,8 @@
               </div>
               <div class="col-lg-4 mb-4 mb-lg-0">
                 <div class="d-flex gap-4 align-items-center">
-                  <input type="text" formControlName="qualification" class="form-control custom w-75" />
-                  <label class="form-label text-nowrap change"
+                  <input id="quali" type="text" formControlName="qualification" class="form-control custom w-75" />
+                  <label for="quali" class="form-label text-nowrap change"
                     [class.label-filled]="edu.get('qualification').value !== ''">Qualification</label>
                 </div>
                 <div *ngIf="
@@ -354,8 +354,8 @@
               </div>
               <div class="col-lg-3 mb-4 mb-lg-0">
                 <div class="d-flex gap-4 align-items-center">
-                  <input type="text" formControlName="percentage" class="form-control w-75 custom" />
-                  <label class="form-label text-nowrap change"
+                  <input id="perc" type="text" formControlName="percentage" class="form-control w-75 custom" />
+                  <label for="perc" class="form-label text-nowrap change"
                     [class.label-filled]="edu.get('percentage').value !== ''">Percentage</label>
                 </div>
                 <div *ngIf="
@@ -403,8 +403,8 @@
             <div class="row d-flex align-items-start justify-content-center width-input">
               <div class="col-lg-4 mb-4 mb-lg-0">
                 <div class="d-flex gap-4 align-items-center">
-                  <input type="text" formControlName="company" class="w-75 form-control custom" />
-                  <label class="w-25 form-label text-nowrap change"
+                  <input id="comp" type="text" formControlName="company" class="w-75 form-control custom" />
+                  <label for="comp" class="w-25 form-label text-nowrap change"
                     [class.label-filled]="exp.get('company').value !== ''">Company</label>
                 </div>
                 <div *ngIf="
@@ -422,8 +422,8 @@
               </div>
               <div class="col-lg-4 mb-4 mb-lg-0">
                 <div class="d-flex gap-4 align-items-center">
-                  <input type="text" formControlName="position" class="form-control custom w-75" />
-                  <label class="form-label text-nowrap change"
+                  <input id="posi" type="text" formControlName="position" class="form-control custom w-75" />
+                  <label for="posi" class="form-label text-nowrap change"
                     [class.label-filled]="exp.get('position').value !== ''">Position</label>
                 </div>
                 <div *ngIf="
@@ -441,8 +441,8 @@
               </div>
               <div class="col-lg-3 mb-4 mb-lg-0">
                 <div class="d-flex gap-4 align-items-center">
-                  <input type="text" formControlName="years" class="form-control w-75 custom" />
-                  <label class="form-label text-nowrap change"
+                  <input id="years" type="text" formControlName="years" class="form-control w-75 custom" />
+                  <label for="years" class="form-label text-nowrap change"
                     [class.label-filled]="exp.get('years').value !== ''">Year</label>
                 </div>
                 <div *ngIf="
