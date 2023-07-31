@@ -10,6 +10,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class ViewModalComponent implements OnInit {
   displayData:any;
   modalViewRef: any;
+  grayBtnText: string;
   constructor(public activeModal: NgbActiveModal) {}
   
   ngOnInit(): void {
@@ -26,6 +27,6 @@ export class ViewModalComponent implements OnInit {
   }
 
   trgCloseModal() {
-    this.activeModal.close();
+    this.modalViewRef.close();
   }
 }

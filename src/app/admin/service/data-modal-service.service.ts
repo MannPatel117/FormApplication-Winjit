@@ -27,6 +27,8 @@ export class DataModalServiceService {
       backdrop: 'static',
     });
     this.modalDetRef.componentInstance.titleText = 'Are you sure?';
+    this.modalDetRef.componentInstance.redBtnText = 'Delete';
+    this.modalDetRef.componentInstance.greyBtnText = 'Cancel';
     this.modalDetRef.componentInstance.modalDetRef = this.modalDetRef;
   }
 
@@ -41,15 +43,6 @@ export class DataModalServiceService {
     window.location.reload();
   }
 
-  /*
-
-    Function to Close Delete Modal
-
-  */
-
-  // closeModalDet() {
-  //   this.modalDetRef.close();
-  // }
 
   /*
 
@@ -64,18 +57,9 @@ export class DataModalServiceService {
       backdrop: 'static',
     });
     this.modalViewRef.componentInstance.displayData=dataView;
+    this.modalViewRef.componentInstance.grayBtnText='Close';
+    this.modalViewRef.componentInstance.modalViewRef=this.modalViewRef;
   }
 
-  
 
-  /*
-
-    Function to Close View Modal
-
-  */
-
-  closeModalView() {
-    this.modalViewRef.close();
-  }
-  
 }

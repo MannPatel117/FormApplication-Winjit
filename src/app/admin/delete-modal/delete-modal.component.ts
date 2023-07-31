@@ -8,6 +8,8 @@ import { DataModalServiceService } from '../service/data-modal-service.service';
 })
 export class DeleteModalComponent {
   titleText:string;
+  redBtnText:string;
+  greyBtnText: string;
   modalDetRef:any;
   constructor(private dataModal: DataModalServiceService) {}
   
