@@ -490,8 +490,8 @@
     
     <br />
     <div class="form-check">
-      <input class="form-check-input" formControlName="check" type="checkbox" />
-      <label class="form-check-label"> Accept Terms and Conditions</label>
+      <input class="form-check-input" id="check" formControlName="check" type="checkbox" />
+      <label class="form-check-label" for="check"> Accept Terms and Conditions</label>
     </div>
     <div *ngIf="
         registerForm.get('check')?.invalid &&

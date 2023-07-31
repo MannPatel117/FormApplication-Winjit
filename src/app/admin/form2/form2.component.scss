@@ -1,13 +1,6 @@
 
 
-
-.left{
-    transform: translateX(60px);
-}
 @media screen and (max-width: 992px) {
-    .left{
-        transform: translateX(0px);
-    }
     .custom{
         width: 100% !important;
     }
@@ -22,6 +15,9 @@
             width: 100% !important;   
         }
     }
+    .select{
+        width: 100%  !important;
+    }
   }
 .error{
     font-size: 12px;
@@ -33,16 +29,10 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
-.height-fix{
-    cursor: pointer;
+.button-add{
+    margin: 0 !important;
+    padding: 0 !important;
 }
-.height-fix2{
-
-    cursor: pointer;
-}
-
-
 .custom{
     position: relative;
     width: 50%;
@@ -87,6 +77,4 @@ input::-webkit-inner-spin-button {
     width: 87%;
 }
 
-.mat-step-icon-selected{
-    background-color: rgb(91, 194, 229)     !important;
-}
+

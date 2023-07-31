@@ -12,9 +12,7 @@ import { AppComponent } from 'src/app/app.component';
 export class Form2Component implements OnInit{
   registerForm1: FormGroup;
   registerForm2: FormGroup;
-  registerForm3: FormGroup;
   registerForm4: FormGroup;
-  registerForm5: FormGroup;
   registerForm6: FormGroup;
 
   countryArr:any = [];
@@ -29,9 +27,8 @@ export class Form2Component implements OnInit{
 
   isValid1=true;
   isValid2=true;
-  isValid3=true;
   isValid4=true;
-  isValid5=true;
+
   isValid6=true;
 
   ngOnInit(): void {
@@ -53,6 +50,8 @@ export class Form2Component implements OnInit{
       lastName: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
       gender: ['', [Validators.required]],
       date: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      phonenumber: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern('^[0-9]+$')]]
     })
 
 
@@ -65,18 +64,11 @@ export class Form2Component implements OnInit{
       pincode: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(6), Validators.pattern('^[0-9]+$')]],
     })
 
-    this.registerForm3=this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      phonenumber: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern('^[0-9]+$')]],
-    })
-
     this.registerForm4 = this.fb.group({
-      education: this.fb.array([]) // Make sure the education FormArray is initialized
+      education: this.fb.array([]), // Make sure the education FormArray is initialized
+      experience: this.fb.array([])
     });
 
-    this.registerForm5=this.fb.group({
-      experience: this.fb.array([])
-    })
 
     this.registerForm6=this.fb.group({
       image: ['', [Validators.required]],
@@ -133,7 +125,7 @@ export class Form2Component implements OnInit{
   }
 
   get experiences(): FormArray {
-    return this.registerForm5.get("experience") as FormArray;
+    return this.registerForm4.get("experience") as FormArray;
   }
 
   newExperiences(): FormGroup {
@@ -184,24 +176,16 @@ export class Form2Component implements OnInit{
     }
   }
   
-  submit3() {
-    if (this.registerForm3.invalid) {
-      this.isValid3=false;
-    }
-  }
+  
   submit4() {
     if (this.registerForm4.invalid) {
       this.isValid4=false;
     }
   }
-  submit5() {
-    if (this.registerForm5.invalid) {
-      this.isValid5=false;
-    }
-  }
+
 
   submit6() {
-    if (this.registerForm5.invalid) {
+    if (this.registerForm6.invalid) {
       this.isValid6=false;
     }
     else{
@@ -210,8 +194,8 @@ export class Form2Component implements OnInit{
   }
 
   submitFinal(){
-    console.log(this.registerForm1.value, this.registerForm2.value, this.registerForm3.value, this.registerForm4.value, this.registerForm5.value)
-    const obj= {...this.registerForm1.value, ...this.registerForm2.value, ...this.registerForm3.value, ...this.registerForm4.value, ...this.registerForm5.value}
+    console.log(this.registerForm1.value, this.registerForm2.value,  this.registerForm4.value)
+    const obj= {...this.registerForm1.value, ...this.registerForm2.value,  ...this.registerForm4.value}
     console.log(obj);
     this.saveData(obj);
     this.appComp.routeShow();
