@@ -1,0 +1,516 @@
+<div class="container">
+    
+    <mat-stepper [linear]="true" orientation="vertical" #stepper>
+        
+      <mat-step [stepControl]="registerForm1">
+        <form [formGroup]="registerForm1">
+          <ng-template matStepLabel>Personal Details</ng-template>
+          <div class="mt-4 mb-4">
+            <div class="d-flex gap-4 align-items-center">
+              <input type="text" formControlName="firstName" class="form-control custom" />
+              <label class="form-label text-nowrap change"
+                [class.label-filled]="registerForm1.get('firstName').value !== ''">First Name</label>
+            </div>
+            <div *ngIf="
+            registerForm1.get('firstName')?.invalid &&
+                (registerForm1.get('firstName')?.touched ||
+                registerForm1.get('firstName')?.dirty ||
+                  !isValid1)
+              " class="row">
+              <div>
+                <p *ngIf="registerForm1.get('firstName').hasError('required')" class="text-danger error">
+                  Enter Firstname
+                </p>
+                <p *ngIf="
+                registerForm1.get('firstName')?.invalid &&
+                    !registerForm1.get('firstName').hasError('required')
+                  " class="text-danger error">
+                  Name is invalid
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="mb-4">
+            <div class="d-flex gap-4 align-items-center">
+              <input type="text" formControlName="lastName" class="form-control custom" />
+              <label class="form-label text-nowrap change"
+                [class.label-filled]="registerForm1.get('lastName').value !== ''">Last Name</label>
+            </div>
+            <div *ngIf="
+            registerForm1.get('lastName')?.invalid &&
+                (registerForm1.get('lastName')?.touched ||
+                registerForm1.get('lastName')?.dirty ||
+                  !isValid1)
+              " class="row">
+              <div>
+                <p *ngIf="registerForm1.get('lastName').hasError('required')" class="text-danger error">
+                  Enter Lastname
+                </p>
+                <p *ngIf="
+                registerForm1.get('lastName')?.invalid &&
+                    !registerForm1.get('lastName').hasError('required')
+                  " class="text-danger error">
+                  Name is invalid
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="mb-4">
+            <div class="d-flex gap-4 align-items-center">
+              <label class="w-25 form-label text-nowrap">Gender</label>
+              <div class="form-check">
+                <input class="form-check-input" formControlName="gender" value="male" type="radio" name="gender"
+                  id="flexRadioDefault1" />
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Male
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" formControlName="gender" value="female" type="radio" name="gender"
+                  id="flexRadioDefault2" />
+                <label class="form-check-label" for="flexRadioDefault2">
+                  Female
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" formControlName="gender" value="other" type="radio" name="gender"
+                  id="flexRadioDefault3" />
+                <label class="form-check-label" for="flexRadioDefault3">
+                  Other
+                </label>
+              </div>
+            </div>
+            <div *ngIf="
+                registerForm1.get('gender').hasError('required') &&
+                (registerForm1.get('gender')?.touched || !isValid1)
+              " class="row">
+              <div class="w-75">
+                <p class="text-danger error">Select Gender</p>
+              </div>
+            </div>
+          </div>
+          <div class="mb-4 custom-height">
+            <div class="d-flex align-items-center gap-2">
+              <label class="w-25 form-label text-nowrap">Birth Date</label>
+              <input formControlName="date" type="date" placeholder="Birth Date" class="input-group  form-control" />
+            </div>
+            <div *ngIf="
+                registerForm1.get('date')?.invalid &&
+                (registerForm1.get('date')?.touched ||
+                  registerForm1.get('date')?.dirty ||
+                  !isValid1)
+              " class="row">
+              <div class="w-75">
+                <p *ngIf="registerForm1.get('date').hasError('required')" class="text-danger error">
+                  Select Date
+                </p>
+                <p *ngIf="registerForm1.get('date').hasError('pattern')" class="text-danger error">
+                  Format should be yyyy-MM-dd.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <button color="primary" mat-raised-button matStepperNext (click)="submit1()">Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="registerForm2" label="Address">
+        <form [formGroup]="registerForm2">
+          <div class="mt-4 mb-4">
+            <div class="d-flex gap-4 align-items-center">
+              <input type="text" formControlName="addressLine1" class="form-control custom" />
+              <label class="form-label text-nowrap change"
+                [class.label-filled]="registerForm2.get('addressLine1').value !== ''">Address Line 1</label>
+            </div>
+            <div *ngIf="
+            registerForm2.get('addressLine1')?.invalid &&
+                (registerForm2.get('addressLine1')?.touched ||
+                registerForm2.get('addressLine1')?.dirty ||
+                  !isValid2)
+              " class="row">
+              <div class="w-75">
+                <p class="text-danger error">Enter Address Line 1</p>
+              </div>
+            </div>
+          </div>
+          <div class="mb-4">
+            <div class="d-flex gap-4 align-items-center">
+              <input type="text" formControlName="addressLine2" class="form-control custom" />
+              <label class="form-label text-nowrap change"
+                [class.label-filled]="registerForm2.get('addressLine2').value !== ''">Address Line 2</label>
+            </div>
+            <div *ngIf="
+            registerForm2.get('addressLine2')?.invalid &&
+                (registerForm2.get('addressLine2')?.touched ||
+                registerForm2.get('addressLine2')?.dirty ||
+                  !isValid2)
+              " class="row">
+              <div class="w-75">
+                <p class="text-danger error">Enter Address Line 2</p>
+              </div>
+            </div>
+          </div>
+          <div class="mb-4 custom-height">
+            <div class="d-flex align-items-center gap-2">
+              <label class="w-25 form-label text-nowrap">Country</label>
+              <select id="country" formControlName="country" (change)="changeCountry($event)"
+                class="btn btn-secondary dropdown-toggle w-100">
+                <option *ngFor="let count of countryArr" [value]="count">
+                  {{ count }}
+                </option>
+              </select>
+            </div>
+            <div *ngIf="
+            registerForm2.controls['country']?.invalid &&
+                (registerForm2.controls['country']?.touched ||
+                registerForm2.controls['country']?.dirty ||
+                  !isValid2)
+              " class="row">
+              <div class="w-75">
+                <p class="text-danger error">Select Country</p>
+              </div>
+            </div>
+          </div>
+          <div class="mb-4 custom-height">
+            <div class="d-flex align-items-center gap-2">
+              <label class="w-25 form-label text-nowrap">State</label>
+              <select formControlName="state" (change)="changeState($event)" class="w-100 btn btn-secondary dropdown-toggle">
+                <option *ngFor="let stat of stateArr" [value]="stat">
+                  {{ stat }}
+                </option>
+              </select>
+            </div>
+            <div *ngIf="
+                registerForm2.get('state')?.invalid &&
+                (registerForm2.get('state')?.touched ||
+                  registerForm2.get('state')?.dirty ||
+                  !isValid2)
+              " class="row">
+              <div class="w-75">
+                <p class="text-danger error">Select State</p>
+              </div>
+            </div>
+          </div>
+          <div class="mb-4 custom-height">
+            <div class="d-flex align-items-center gap-2">
+              <label class="w-25 form-label text-nowrap">City</label>
+              <select formControlName="city" class="w-100 btn btn-secondary dropdown-toggle">
+                <option *ngFor="let city of cityArr" [value]="city">
+                  {{ city }}
+                </option>
+              </select>
+            </div>
+            <div *ngIf="
+                registerForm2.get('city')?.invalid &&
+                (registerForm2.get('city')?.touched ||
+                  registerForm2.get('city')?.dirty ||
+                  !isValid2)
+              " class="row">
+              <div class="w-75">
+                <p class="text-danger error">Select City</p>
+              </div>
+            </div>
+          </div>
+          <div class="mb-4">
+            <div class="d-flex gap-4 align-items-center">
+              <input type="text" formControlName="pincode" class="form-control custom" maxlength="6" />
+              <label class="w-25 form-label text-nowrap change"
+                [class.label-filled]="registerForm2.get('pincode').value !== ''">Pincode</label>
+            </div>
+            <div *ngIf="
+                registerForm2.get('pincode')?.invalid &&
+                (registerForm2.get('pincode')?.touched ||
+                  registerForm2.get('pincode')?.dirty ||
+                  !isValid2)
+              " class="row">
+              <div class="w-75">
+                <p *ngIf="registerForm2.get('pincode').hasError('required')" class="text-danger error">
+                  Enter Pincode
+                </p>
+                <p *ngIf="
+                    registerForm2.get('pincode').errors.minlength ||
+                    registerForm2.get('pincode').errors.maxlength
+                  " class="text-danger error">
+                  Pin Code should by 6 digits
+                </p>
+                <p *ngIf="registerForm2.get('pincode').errors.pattern" class="text-danger error">
+                  Invalid Pincode
+                </p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <button color="primary" mat-raised-button matStepperNext (click)="submit2()">Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="registerForm3" label="Contact Details">
+        <form [formGroup]="registerForm3">
+          <div class="mt-4 mb-4">
+            <div class="d-flex gap-4 align-items-center">
+              <input type="email" formControlName="email" class="form-control custom" />
+              <label class="w-25 form-label text-nowrap change"
+                [class.label-filled]="registerForm3.get('email').value !== ''">Email</label>
+            </div>
+            <div *ngIf="
+                registerForm3.get('email')?.invalid &&
+                (registerForm3.get('email')?.touched ||
+                registerForm3.get('email')?.dirty ||
+                  !isValid3)
+              " class="row">
+              <div class="w-75">
+                <p *ngIf="registerForm3.get('email').hasError('required')" class="text-danger error">
+                  Enter Email
+                </p>
+                <p *ngIf="registerForm3.get('email').errors?.['email']" class="text-danger error">
+                  Enter Valid Email
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="mb-4">
+            <div class="d-flex gap-4 align-items-center">
+              <input type="text" formControlName="phonenumber" maxlength="10" class="form-control  custom" />
+              <label [class.label-filled]="registerForm3.get('phonenumber').value !== ''"
+                class="change form-label text-nowrap">Phone Number</label>
+            </div>
+            <div *ngIf="
+                registerForm3.get('phonenumber')?.invalid &&
+                (registerForm3.get('phonenumber')?.touched ||
+                registerForm3.get('phonenumber')?.dirty ||
+                  !isValid3)
+              " class="row">
+              <div class="w-75">
+                <p *ngIf="registerForm3.get('phonenumber').hasError('required')" class="text-danger error">
+                  Enter Phone Number
+                </p>
+                <p *ngIf="
+                registerForm3.get('phonenumber').errors.minlength ||
+                registerForm3.get('phonenumber').errors.maxlength
+                  " class="text-danger error">
+                  Phone number should be 10 digits
+                </p>
+                <p *ngIf="registerForm3.get('phonenumber').errors.pattern" class="text-danger error">
+                  Invalid Phone number
+                </p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <button color="primary" mat-raised-button matStepperNext (click)="submit3()">Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step  [stepControl]="registerForm4" label="Education Details" >
+        <form [formGroup]="registerForm4">
+          <button (click)="addEducation()" color="primary" mat-raised-button class="mt-4 mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-plus-circle-fill"
+            viewBox="0 0 16 16">
+            <path
+              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
+          </svg>
+          Add</button>
+          <div formArrayName="education">
+            <div *ngFor="let edu of educations.controls; let i = index" class="mb-4">
+              <div [formGroupName]="i">
+                <div class="mb-4 custom-height">
+                    <div class="d-flex gap-4 align-items-center">
+                        <input type="text" formControlName="university" class="w-100 form-control custom" />
+                        <label class="change form-label text-nowrap"
+                          [class.label-filled]="edu.get('university').value !== ''">University</label>
+                      </div>
+                      <div *ngIf="
+                          edu.get('university')?.invalid &&
+                          (edu.get('university')?.touched ||
+                            edu.get('university')?.dirty ||
+                            !isValid4)
+                        " class="row">
+                        <div class="w-75">
+                          <p *ngIf="edu.get('university').hasError('required')" class="text-danger error">
+                            Enter University Name
+                          </p>
+                        </div>
+                      </div>
+                </div>
+                <div class="mb-4 custom-height">
+                    <div class="d-flex gap-4 align-items-center">
+                        <input type="text" formControlName="qualification" class="w-100 form-control custom" />
+                        <label class="form-label text-nowrap change"
+                          [class.label-filled]="edu.get('qualification').value !== ''">Qualification</label>
+                      </div>
+                      <div *ngIf="
+                          edu.get('qualification')?.invalid &&
+                          (edu.get('qualification')?.touched ||
+                            edu.get('qualification')?.dirty ||
+                            !isValid4)
+                        " class="row">
+                        <div class="w-75">
+                          <p *ngIf="edu.get('qualification').hasError('required')" class="text-danger error w-75">
+                            Enter Qualification
+                          </p>
+                        </div>
+                      </div>
+                </div>
+                <div class="mb-4 custom-height">
+                    <div class="d-flex gap-4 align-items-center">
+                        <input type="text" formControlName="percentage" class="w-100 form-control custom" />
+                        <label class="form-label text-nowrap change"
+                          [class.label-filled]="edu.get('percentage').value !== ''">Percentage</label>
+                      </div>
+                      <div *ngIf="
+                          edu.get('percentage')?.invalid &&
+                          (edu.get('percentage')?.touched ||
+                            edu.get('percentage')?.dirty ||
+                            !isValid4)
+                        " class="row">
+                        <div class="w-75">
+                          <p *ngIf="edu.get('percentage').hasError('required')" class="text-danger error">
+                            Enter Percentage
+                          </p>
+                        </div>
+                      </div>
+                </div>
+                <div class="mb-4 custom-height">
+                    <a class="d-flex justify-content-center align-items-center gap-2 height-fix2" (click)="remEducation(i)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#DC3545"
+                          class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                          <path
+                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+                        </svg>
+                      </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <button color="primary" mat-raised-button matStepperNext (click)="submit4()">Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="registerForm4" label="Experience Details" >
+        <form [formGroup]="registerForm5">
+          <button (click)="addExperience()" color="primary" mat-raised-button class="mt-4 mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-plus-circle-fill"
+            viewBox="0 0 16 16">
+            <path
+              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
+          </svg>
+          Add</button>
+          <div formArrayName="experience">
+            <div *ngFor="let exp of experiences.controls; let i = index" class="mb-4">
+              <div [formGroupName]="i">
+                <div class="mb-4 custom-height">
+                    <div class="d-flex gap-4 align-items-center">
+                        <input type="text" formControlName="company" class="w-100 form-control custom" />
+                        <label class="w-25 form-label text-nowrap change"
+                          [class.label-filled]="exp.get('company').value !== ''">Company</label>
+                      </div>
+                      <div *ngIf="
+                          exp.get('company')?.invalid &&
+                          (exp.get('company')?.touched ||
+                            exp.get('company')?.dirty ||
+                            !isValid5)
+                        " class="row">
+                        <div class="w-75">
+                          <p *ngIf="exp.get('company').hasError('required')" class="text-danger error">
+                            Enter Company Name
+                          </p>
+                        </div>
+                      </div>
+                </div>
+                <div class="mb-4 custom-height">
+                    <div class="d-flex gap-4 align-items-center">
+                        <input type="text" formControlName="position" class="form-control custom w-100" />
+                        <label class="form-label text-nowrap change"
+                          [class.label-filled]="exp.get('position').value !== ''">Position</label>
+                      </div>
+                      <div *ngIf="
+                          exp.get('position')?.invalid &&
+                          (exp.get('position')?.touched ||
+                            exp.get('position')?.dirty ||
+                            !isValid5)
+                        " class="row">
+                        <div class="w-75">
+                          <p *ngIf="exp.get('position').hasError('required')" class="text-danger error w-75">
+                            Enter position
+                          </p>
+                        </div>
+                      </div>
+                </div>
+                <div class="mb-4 custom-height">
+                    <div class="d-flex gap-4 align-items-center">
+                        <input type="text" formControlName="years" class="form-control w-100 custom" />
+                        <label class="form-label text-nowrap change"
+                          [class.label-filled]="exp.get('years').value !== ''">Year</label>
+                      </div>
+                      <div *ngIf="
+                          exp.get('years')?.invalid &&
+                          (exp.get('years')?.touched ||
+                            exp.get('years')?.dirty ||
+                            !isValid5)
+                        " class="row">
+                        <div class="w-75">
+                          <p *ngIf="exp.get('years').hasError('required')" class="text-danger error">
+                            Enter Years
+                          </p>
+                        </div>
+                      </div>
+                </div>
+                <div class="mb-4 custom-height">
+                    <a class="d-flex justify-content-center align-items-center gap-2 height-fix2" (click)="remExperience(i)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#DC3545"
+                          class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                          <path
+                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+                        </svg>
+                      </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <button color="primary" mat-raised-button matStepperNext (click)="submit5()">Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Final Touches</ng-template>
+        <div *ngIf="selectedImage">
+            <img height="120px" width="120px" [src]="selectedImagePreview" alt="Selected Image" />
+            <br>
+          <br>
+        </div>
+        <form [formGroup]="registerForm6">
+            <div class="mt-4 mb-4">
+                <label class="form-label" for="customFile">Add Profile Photo</label>
+                <input type="file" accept="image/*" formControlName="image" class="form-control custom-height" id="customFile"
+                    (change)="onFileSelected($event)" />
+                <div *ngIf="
+                    registerForm6.get('image')?.invalid &&
+                    (registerForm6.get('image')?.touched ||
+                    registerForm6.get('image')?.dirty ||
+                    !isValid6)
+                    ">
+                    <p *ngIf="registerForm6.get('image').hasError('required')" class="text-danger error">
+                        Add Image
+                    </p>
+                 </div>
+            </div>
+            <div class="mb-4 d-flex gap-2">
+                <input class="form-check-input" id="checkbox" formControlName="check" type="checkbox" />
+                <label class="form-check-label" for="checkbox"> Accept Terms and Conditions</label>
+                <div *ngIf="
+                    registerForm6.get('check')?.invalid &&
+                    (registerForm6.get('check')?.touched ||
+                        registerForm6.get('check')?.dirty ||
+                        !isValid6)
+                    ">
+                    <p class="text-danger error">Accept Terms and Condition</p>
+                </div>
+            </div>
+            <div>
+                <button color="primary" mat-raised-button matStepperNext (click)="submit6()">Next</button>
+              </div>
+        </form>
+      </mat-step>
+    </mat-stepper>
+  </div>

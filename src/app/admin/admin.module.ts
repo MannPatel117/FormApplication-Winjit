@@ -14,6 +14,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
+import { Form2Component } from './form2/form2.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import {MatButtonModule} from '@angular/material/button';
     DisplayComponent,
     DeleteModalComponent,
     ViewModalComponent,
+    Form2Component,
   ],
   imports: [
     CommonModule,

@@ -22,9 +22,6 @@
             width: 100% !important;   
         }
     }
-    .select{
-        width: 100%  !important;
-    }
   }
 .error{
     font-size: 12px;
@@ -36,10 +33,16 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-.button-add{
-    margin: 0 !important;
-    padding: 0 !important;
+
+.height-fix{
+    cursor: pointer;
 }
+.height-fix2{
+
+    cursor: pointer;
+}
+
+
 .custom{
     position: relative;
     width: 50%;
@@ -87,4 +90,3 @@ input::-webkit-inner-spin-button {
 .mat-step-icon-selected{
     background-color: rgb(91, 194, 229)     !important;
 }
-

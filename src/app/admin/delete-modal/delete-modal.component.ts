@@ -7,10 +7,12 @@ import { DataModalServiceService } from '../service/data-modal-service.service';
   styleUrls: ['./delete-modal.component.scss'],
 })
 export class DeleteModalComponent {
+  titleText:string;
+  modalDetRef:any;
   constructor(private dataModal: DataModalServiceService) {}
-
+  
   trgCloseModal() {
-    this.dataModal.closeModalDet();
+    this.modalDetRef.close();
   }
 
   deleteData() {

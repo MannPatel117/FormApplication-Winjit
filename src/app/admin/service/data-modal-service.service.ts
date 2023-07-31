@@ -11,6 +11,7 @@ export class DataModalServiceService {
   modalDetRef: NgbModalRef;
   modalViewRef: NgbModalRef;
   detId: number;
+
   constructor(private route: Router, private modalService: NgbModal) {}
 
   /*
@@ -25,6 +26,8 @@ export class DataModalServiceService {
       centered: true,
       backdrop: 'static',
     });
+    this.modalDetRef.componentInstance.titleText = 'Are you sure?';
+    this.modalDetRef.componentInstance.modalDetRef = this.modalDetRef;
   }
 
   /*
@@ -36,7 +39,6 @@ export class DataModalServiceService {
   deleteItem() {
     sessionStorage.removeItem(String(this.detId));
     window.location.reload();
-    this.closeModalDet();
   }
 
   /*
@@ -45,9 +47,9 @@ export class DataModalServiceService {
 
   */
 
-  closeModalDet() {
-    this.modalDetRef.close();
-  }
+  // closeModalDet() {
+  //   this.modalDetRef.close();
+  // }
 
   /*
 
