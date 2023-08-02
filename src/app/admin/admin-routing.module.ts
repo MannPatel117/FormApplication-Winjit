@@ -5,7 +5,7 @@ import { DisplayComponent } from './display/display.component';
 import { Form2Component } from './form2/form2.component';
 
 const routes: Routes = [
-  {path:'form', component: FormComponent},
+  {path:'form', component: Form2Component},
   {path: 'display', component: DisplayComponent},
   {path: 'form2', component: Form2Component}
 ];

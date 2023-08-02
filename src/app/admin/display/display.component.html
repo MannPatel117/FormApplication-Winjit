@@ -1,5 +1,5 @@
 
-<div class="container">
+<div class="container main" [class.blurred]="showData || showDet">
   <div class="row d-flex justify-content-center align-items-center translate">
     <div class="height heading d-flex justify-content-center align-items-center">Details</div>
   </div>
@@ -28,10 +28,10 @@
         <tbody>
           <tr *ngFor="let data of parsedArrayMap; let i=index">
             <th scope="row">{{i+1}}</th>
-            <td>{{data.firstName}}</td>
-            <td>{{data.city}}</td>
-            <td>{{data.date}}</td>
-            <td>{{data.phonenumber}}</td>
+            <td>{{data.personalInfo.firstName}}</td>
+            <td>{{data.addressInfo.city}}</td>
+            <td>{{data.personalInfo.date}}</td>
+            <td>{{data.personalInfo.phonenumber}}</td>
             <td class="d-flex gap-2">
               <button class="btn btn-success d-flex align-items-center" (click)="triggerViewData(data.key)">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
@@ -50,5 +50,6 @@
       </table>
     </div>
   </div>
-  
+  <app-view-modal [displayData]="sendData" (closeModal)="hideData($event)" *ngIf="showData"></app-view-modal>
+  <app-delete-modal [titleText]="titleText" [detId]="detId" (closeModal)="hideDet($event)" *ngIf="showDet"></app-delete-modal>
 </div>

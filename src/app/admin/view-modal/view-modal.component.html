@@ -2,7 +2,7 @@
 <div class="modal-lg custom">
     <div class="modal-header">
         <h1 class="modal-title text-success fs-5">Employee Details</h1>
-        <button type="button" class="btn btn-outline-danger d-flex align-items-center" (click)="trgCloseModal()" data-bs-dismiss="modal" aria-label="Close">
+        <button type="button" class="btn btn-outline-danger d-flex align-items-center" (click)="trgCloseModal()"  aria-label="Close">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
                 <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
               </svg>
@@ -16,66 +16,66 @@
             <div class="row">
                 <div class="row col-lg-6">
                     <div class="col fw-semibold">First Name : </div>
-                    <div class="col">{{displayData.firstName}}</div>
+                    <div class="col">{{displayData.personalInfo.firstName}}</div>
                 </div>
                 <div class="row col-lg-6">
                     <div class="col fw-semibold">Last Name :  </div>
-                    <div class="col">{{displayData.lastName}}</div> 
+                    <div class="col">{{displayData.personalInfo.lastName}}</div> 
                 </div>
             </div>
 
             <div class="row">
                 <div class="row col-lg-6">
                     <div class="col fw-semibold">Gender :  </div>
-                    <div class="col">{{displayData.gender | uppercase}}</div> 
+                    <div class="col">{{displayData.personalInfo.gender | uppercase}}</div> 
                 </div>
                 <div class="row col-lg-6">
                     <div class="col fw-semibold">Date of Birth :</div>
-                    <div class="col">{{displayData.date}}</div>   
+                    <div class="col">{{displayData.personalInfo.date}}</div>   
                 </div>
             </div>
        
             <div class="row">
                 <div class="row col-lg-6">
                     <div class="col fw-semibold">Address1 : </div>
-                    <div class="col">{{displayData.addressLine1}}</div> 
+                    <div class="col">{{displayData.addressInfo.addressLine1}}</div> 
                 </div>
                 <div class="row col-lg-6">
                     <div class="col  fw-semibold">Address2 : </div>
-                    <div class="col">{{displayData.addressLine2}}</div>
+                    <div class="col">{{displayData.addressInfo.addressLine2}}</div>
                 </div>
             </div>
          
             <div class="row">
                 <div class="row col-lg-6">
                     <div class="col fw-semibold">City : </div>
-                    <div class="col">{{displayData.city}}</div>
+                    <div class="col">{{displayData.addressInfo.city}}</div>
                 </div>
                 <div class="row col-lg-6">
                     <div class="col fw-semibold">State : </div>
-                    <div class="col">{{displayData.state}}</div>
+                    <div class="col">{{displayData.addressInfo.state}}</div>
                 </div>
             </div>
   
             <div class="row">
                 <div class="row col-lg-6">
                     <div class="col fw-semibold">Country : </div>
-                    <div class="col">{{displayData.country}}</div>
+                    <div class="col">{{displayData.addressInfo.country}}</div>
                 </div>
                 <div class="row col-lg-6">
                     <div class="col fw-semibold">Pincode : </div>
-                    <div class="col">{{displayData.pincode}}</div>
+                    <div class="col">{{displayData.addressInfo.pincode}}</div>
                 </div>
             </div>
       
             <div class="row">
                 <div class="row col-lg-6">
                     <div class="col fw-semibold">Email : </div>
-                    <div class="col">{{displayData.email}}</div>
+                    <div class="col">{{displayData.personalInfo.email}}</div>
                 </div>
                 <div class="row col-lg-6">
                     <div class="col fw-semibold">Phone Number : </div>
-                    <div class="col">{{displayData.phonenumber}}</div>
+                    <div class="col">{{displayData.personalInfo.phonenumber}}</div>
                 </div>
             </div>
             <br>
@@ -83,7 +83,7 @@
                <h4>Education</h4> 
             </div>
             <p *ngIf="showEdu">None</p>
-            <div *ngFor="let edu of displayData.education" class="row">
+            <div *ngFor="let edu of displayData.eduExpInfo.education" class="row">
                 <div class="row col-lg-4">
                     <div class="col fw-semibold">Univeristy</div>
                     <div class="col">{{edu.university}}</div>
@@ -102,7 +102,7 @@
                 <h4>Experience</h4> 
              </div>
              <p *ngIf="showEdu">None</p>
-             <div *ngFor="let exp of displayData.experience" class="row">
+             <div *ngFor="let exp of displayData.eduExpInfo.experience" class="row">
                  <div class="row col-lg-4">
                      <div class="col fw-semibold">Company</div>
                      <div class="col">{{exp.company}}</div>
@@ -119,6 +119,6 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="trgCloseModal()" data-bs-dismiss="modal">{{grayBtnText}}</button>
+        <button type="button" class="btn btn-secondary" (click)="trgCloseModal()" >Close</button>
       </div>
 </div>

@@ -3,6 +3,8 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 import countryData from '../../../assets/city_data.json';
 import { Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
+import { StepperOrientation } from '@angular/material/stepper';
+
 
 @Component({
   selector: 'app-form2',
@@ -10,10 +12,10 @@ import { AppComponent } from 'src/app/app.component';
   styleUrls: ['./form2.component.scss']
 })
 export class Form2Component implements OnInit{
-  registerForm1: FormGroup;
-  registerForm2: FormGroup;
-  registerForm4: FormGroup;
-  registerForm6: FormGroup;
+
+  registerForm: FormGroup;
+  eduExpInfo: FormGroup;
+  otherInfo: FormGroup;
 
   countryArr:any = [];
   countryIndex: number;
@@ -28,12 +30,14 @@ export class Form2Component implements OnInit{
   isValid1=true;
   isValid2=true;
   isValid4=true;
-
   isValid6=true;
 
+  layout:StepperOrientation= 'horizontal';
+  
   ngOnInit(): void {
     this.init();
     this.fetchCountry();
+    this.changeLayout();  
   }
 
 
@@ -45,35 +49,34 @@ export class Form2Component implements OnInit{
 
 
   init(){
-    this.registerForm1=this.fb.group({
-      firstName: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
-      lastName: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
-      gender: ['', [Validators.required]],
-      date: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      phonenumber: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern('^[0-9]+$')]]
-    })
-
-
-    this.registerForm2=this.fb.group({
-      addressLine1: ['', [Validators.required]],
-      addressLine2: ['', [Validators.required]],
-      city: ['', [Validators.required]],
-      state: ['', [Validators.required]],
-      country: ['', [Validators.required]],
-      pincode: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(6), Validators.pattern('^[0-9]+$')]],
-    })
-
-    this.registerForm4 = this.fb.group({
-      education: this.fb.array([]), // Make sure the education FormArray is initialized
-      experience: this.fb.array([])
+    
+    this.registerForm = this.fb.group({
+      personalInfo: this.fb.group({
+        firstName: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
+        lastName: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
+        gender: ['', [Validators.required]],
+        date: ['', [Validators.required]],
+        email: ['', [Validators.required, Validators.email]],
+        phonenumber: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern('^[0-9]+$')]]
+      }),
+      addressInfo: this.fb.group({
+        addressLine1: ['', [Validators.required]],
+        addressLine2: ['', [Validators.required]],
+        city: ['', [Validators.required]],
+        state: ['', [Validators.required]],
+        country: ['', [Validators.required]],
+        pincode: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(6), Validators.pattern('^[0-9]+$')]],
+      }),
+      eduExpInfo: this.fb.group({
+        education: this.fb.array([]), // Make sure the education FormArray is initialized
+        experience: this.fb.array([])
+      }),
+      otherInfo: this.fb.group({
+        image: ['', [Validators.required]],
+        check: [false, Validators.requiredTrue]
+      })
     });
-
-
-    this.registerForm6=this.fb.group({
-      image: ['', [Validators.required]],
-      check: [false, Validators.requiredTrue]
-    })
+    window.addEventListener("resize", this.changeLayout)
   }
 
   fetchCountry() {
@@ -106,7 +109,7 @@ export class Form2Component implements OnInit{
 
 
   get educations(): FormArray {
-    return this.registerForm4.get("education") as FormArray;
+    return this.registerForm.get("eduExpInfo.education") as FormArray;
   }
 
   newEducation(): FormGroup {
@@ -125,7 +128,7 @@ export class Form2Component implements OnInit{
   }
 
   get experiences(): FormArray {
-    return this.registerForm4.get("experience") as FormArray;
+    return this.registerForm.get("eduExpInfo.experience") as FormArray;
   }
 
   newExperiences(): FormGroup {
@@ -165,27 +168,28 @@ export class Form2Component implements OnInit{
  
 
   submit1() {
-    if (this.registerForm1.invalid) {
+
+    if (this.registerForm.get('personalInfo').invalid) {
       this.isValid1=false;
     }
   }
 
   submit2() {
-    if (this.registerForm2.invalid) {
+    if (this.registerForm.get('addressInfo').invalid) {
       this.isValid2=false;
     }
   }
   
   
   submit4() {
-    if (this.registerForm4.invalid) {
+    if (this.registerForm.get('eduExpInfo').invalid) {
       this.isValid4=false;
     }
   }
 
 
   submit6() {
-    if (this.registerForm6.invalid) {
+    if (this.registerForm.get('otherInfo').invalid) {
       this.isValid6=false;
     }
     else{
@@ -194,8 +198,9 @@ export class Form2Component implements OnInit{
   }
 
   submitFinal(){
-    console.log(this.registerForm1.value, this.registerForm2.value,  this.registerForm4.value)
-    const obj= {...this.registerForm1.value, ...this.registerForm2.value,  ...this.registerForm4.value}
+    // console.log(this.registerForm1.value, this.registerForm2.value,  this.registerForm4.value)
+    // const obj= {...this.registerForm1.value, ...this.registerForm2.value,  ...this.registerForm4.value}
+    const obj = this.registerForm.value;
     console.log(obj);
     this.saveData(obj);
     this.appComp.routeShow();
@@ -208,5 +213,20 @@ export class Form2Component implements OnInit{
       let num=((sessionStorage.length)+1).toString();     // num variable to set key for the data 
       data.key=String(num);                               //appending the key variable in the object
       sessionStorage.setItem(num,JSON.stringify(data));   //stringifying the object to store it in session storage
+    }
+
+
+    changeLayout(){
+
+      const screenWidth = window.innerWidth;
+      console.log(screenWidth)
+      if(screenWidth<1000)
+      {
+        this.layout= 'vertical';
+      }
+      else
+      {
+        this.layout= 'horizontal';
+      }
     }
 }

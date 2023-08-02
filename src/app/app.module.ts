@@ -35,6 +35,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSelectModule} from '@angular/material/select';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     CheckObserveComponent,
     BottomSheetComponent,
     DialogueBoxComponent,
+    TestComponent,
   ],
 
   imports: [

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DataModalServiceService } from '../service/data-modal-service.service';
 
 @Component({
@@ -7,17 +7,31 @@ import { DataModalServiceService } from '../service/data-modal-service.service';
   styleUrls: ['./delete-modal.component.scss'],
 })
 export class DeleteModalComponent {
-  titleText:string;
-  redBtnText:string;
-  greyBtnText: string;
-  modalDetRef:any;
+  @Input() titleText: string; //Dynamic Text for Display
+  @Input() detId: number; //Inputting the Id of item to be deleted
+  @Output() closeModal = new EventEmitter<boolean>(); //Handling closing of modal to emit its state change to parent component
+
+
+  // titleText:string;
+  // redBtnText:string;
+  // greyBtnText: string;
+
   constructor(private dataModal: DataModalServiceService) {}
   
+  /*
+    Function to Emit change of modal state in Display Component
+  */
+
   trgCloseModal() {
-    this.modalDetRef.close();
+    this.closeModal.emit(false);
   }
 
+  /*
+    Function to Delete Data From Local Storage  
+  */
+
   deleteData() {
-    this.dataModal.deleteItem();
+    sessionStorage.removeItem(String(this.detId));
+    window.location.reload();
   }
 }

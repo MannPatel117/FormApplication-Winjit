@@ -11,20 +11,28 @@ import { DataModalServiceService } from '../service/data-modal-service.service';
   ],
 })
 export class DisplayComponent implements OnInit {
+  
   dataArray = [];
 
-  sendData: any;
+  showData= false; //hide the Data component initially
+  showDet= false; // hide the delete component initially
 
-  parsedArrayMap: any;
+  sendData: any; //holds data to display in view modal
+  
+  titleText='';  // Dynamic title text for Delete Modal
 
-  constructor(
-    private dataModal: DataModalServiceService,
-    private modalService: NgbModal
-  ) {}
+  detId: number; // Holds Id of item to be deleted
+
+  parsedArrayMap: any; 
+
+  constructor(private dataModal: DataModalServiceService, private modalService: NgbModal) 
+  {}
 
   ngOnInit(): void {
     this.fetchAllData();
   }
+
+  /* Function to Fetch Data from Session Storage */
 
   fetchAllData() {
     this.dataArray = [];
@@ -34,6 +42,8 @@ export class DisplayComponent implements OnInit {
     this.processData();
   }
 
+  /* Function to Process Stringed JSON Data from Session Storage */
+
   processData() {
     this.parsedArrayMap = [];
     this.parsedArrayMap = this.dataArray.map((jsonString) =>
@@ -41,14 +51,43 @@ export class DisplayComponent implements OnInit {
     );
   }
 
+  /* Function to Open Delete Modal */
+
   OpenModalDet(id: number) {
-    this.dataModal.openModalDet(id);
+    // this.dataModal.openModalDet(id);
+    this.titleText="Are you sure?";
+    this.detId=id;
+    this.showDet=true;
   }
 
-  triggerViewData(id: number) {
-    this.sendData = this.parsedArrayMap.find(
+  /* Function to Find Detailed Info of Specific Id to display in View Modal */
+
+  findData(id:number){
+    return this.parsedArrayMap.find(
       (item: { key: number }) => item.key === id
     );
-    this.dataModal.openModalView(this.sendData);
   }
+
+  /* Function to Open View Modal */
+
+  async triggerViewData(id: number) {
+    this.sendData = await this.findData(id);
+    this.showData= true;
+    // this.dataModal.openModalView(this.sendData);
+  }
+
+  /* Function to Close View Modal */
+
+  hideData(data: boolean)
+  {
+    this.showData=data;
+  }
+
+  /* Function to Close Delete Modal */
+
+  hideDet(data: boolean)
+  {
+    this.showDet=data;
+  }
+ 
 }
